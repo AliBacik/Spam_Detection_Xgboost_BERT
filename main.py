@@ -226,7 +226,7 @@ root = tk.Tk()
 root.title("Spam Mesaj Kontrolü")
 
 # İkonu belirle
-root.iconbitmap("Mail.ico")
+root.iconbitmap("icons/Mail.ico")
 
 # Pencere boyutunu ayarlama
 root.geometry("500x400")
@@ -238,7 +238,7 @@ label.pack(pady=10)
 
 # upload icon'u yükle
 
-icon = PhotoImage(file="Upload.png")
+icon = PhotoImage(file="icons/Upload.png")
 # Resmi ekleyen bir Label oluştur
 icon_label = tk.Label(root, image=icon)
 icon_label.place(x=223,y=58)
