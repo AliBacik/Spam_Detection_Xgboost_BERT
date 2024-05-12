@@ -12,6 +12,7 @@ import re
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter import PhotoImage
 import threading
 
 data=None ### global değişken
@@ -23,7 +24,7 @@ def load_csv():
     if file_path:
         try:
             data = pd.read_csv(file_path,encoding='latin-1')
-            label.config(text="Dosya başarıyla yüklendi: " + file_path)
+            label.config(text="Dosya başarıyla yüklendi: ")
 
         except Exception as e:
             label.config(text="Hata: Dosya yüklenemedi. Hata Detayı: " + str(e))
@@ -224,6 +225,9 @@ def xgboost_thread():
 root = tk.Tk()
 root.title("Spam Mesaj Kontrolü")
 
+# İkonu belirle
+root.iconbitmap("C:/Users/bckal/PycharmProjects/pythonProject/Mail.ico")
+
 # Pencere boyutunu ayarlama
 root.geometry("500x400")
 root.resizable(False, False)
@@ -232,9 +236,19 @@ root.resizable(False, False)
 label = tk.Label(root, text="CSV dosyasını yüklemek için 'Yükle' butonuna tıklayın.", wraplength=400)
 label.pack(pady=10)
 
+# upload icon'u yükle
+
+icon = PhotoImage(file="C:/Users/bckal/PycharmProjects/pythonProject/Upload.png")
+# Resmi ekleyen bir Label oluştur
+icon_label = tk.Label(root, image=icon)
+icon_label.place(x=223,y=58)
+
+
 # Yükleme düğmesi
 load_button = tk.Button(root, text="Yükle", command=load_csv)
-load_button.pack(pady=5)
+load_button.place(x=230,y=35)
+
+
 
 # XGBoost butonu
 xgboost_button = tk.Button(root, text="XGBoost", command=xgboost_thread)
@@ -259,7 +273,7 @@ bert_checkbox.place(x=330, y=320)
 
 # Metin kutusu
 text_box = tk.Text(root, height=8, width=50)
-text_box.place(x=50, y=100)
+text_box.place(x=50, y=110)
 
 # Uygulamayı başlatma
 root.mainloop()
